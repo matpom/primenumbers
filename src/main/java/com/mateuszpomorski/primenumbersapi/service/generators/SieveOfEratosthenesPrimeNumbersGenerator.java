@@ -1,4 +1,4 @@
-package com.mateuszpomorski.primenumbersapi.service;
+package com.mateuszpomorski.primenumbersapi.service.generators;
 
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class SieveOfEratosthenesPrimeNumbersGenerator implements PrimeNumbersGen
    */
   @Override
   public List<Integer> generatePrimes(int limit) {
-    if (limit < 0 || limit > MAX_ARRAY_SIZE - 1) {
+    if (limit > MAX_ARRAY_SIZE - 1) {
       throw new IllegalArgumentException("Attempt to generate primes for: " + limit);
     }
     boolean[] prime = new boolean[limit + 1];
@@ -41,7 +41,7 @@ public class SieveOfEratosthenesPrimeNumbersGenerator implements PrimeNumbersGen
         }
       }
     }
-    List<Integer> primeNumbers = new LinkedList<>();
+    LinkedList<Integer> primeNumbers = new LinkedList<>();
     for (int i = 2; i <= limit; i++) {
       if (prime[i]) {
         primeNumbers.add(i);

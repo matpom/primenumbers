@@ -5,6 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import com.google.common.collect.ImmutableList;
+import com.mateuszpomorski.primenumbersapi.service.generators.SieveOfEratosthenesPrimeNumbersGenerator;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,12 +14,6 @@ public class SieveOfEratosthenesPrimeNumbersGeneratorTest {
 
   private final SieveOfEratosthenesPrimeNumbersGenerator generator =
       new SieveOfEratosthenesPrimeNumbersGenerator();
-
-  @Test(expected = IllegalArgumentException.class)
-  public void shouldThrownIllegalArgumentExceptionIfTheNumberIsNotPositive() {
-    //when
-    generator.generatePrimes(-1);
-  }
 
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrownIllegalArgumentExceptionIfTheNumberIsTooBig() {

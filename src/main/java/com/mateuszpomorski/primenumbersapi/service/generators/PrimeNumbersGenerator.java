@@ -1,4 +1,4 @@
-package com.mateuszpomorski.primenumbersapi.service;
+package com.mateuszpomorski.primenumbersapi.service.generators;
 
 import java.util.List;
 
