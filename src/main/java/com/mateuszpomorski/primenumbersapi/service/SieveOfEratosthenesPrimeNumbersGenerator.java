@@ -1,9 +1,12 @@
 package com.mateuszpomorski.primenumbersapi.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class SieveOfEratosthenesPrimeNumbersGenerator implements PrimeNumbersGenerator {
 
   /**
@@ -23,8 +26,7 @@ public class SieveOfEratosthenesPrimeNumbersGenerator implements PrimeNumbersGen
   @Override
   public List<Integer> generatePrimes(int limit) {
     if (limit < 0 || limit > MAX_ARRAY_SIZE - 1) {
-      throw new IllegalArgumentException("Limit must be a positive number less or equal to "
-          + (MAX_ARRAY_SIZE - 1));
+      throw new IllegalArgumentException("Attempt to generate primes for: " + limit);
     }
     boolean[] prime = new boolean[limit + 1];
     Arrays.fill(prime, true);
