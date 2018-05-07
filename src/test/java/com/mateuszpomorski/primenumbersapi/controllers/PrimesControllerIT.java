@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -24,14 +25,29 @@ public class PrimesControllerIT {
   private MockMvc mockMvc;
 
   @Test
-  public void shouldReturnAPrimesResponse() throws Exception {
+  public void shouldReturnJsonPrimesResponse() throws Exception {
     //when
     mockMvc.perform(get(PRIMES_PATH + "/10"))
         //then
         .andExpect(status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
         .andExpect(content().json(
             ResourceReader.readResourceAsString(
-                "responses" + PRIMES_PATH + "_10.json"), true)
+                "responses/primes_10.json"), true)
+        );
+  }
+
+  @Test
+  public void shouldReturnXmlPrimesResponse() throws Exception {
+    //when
+    mockMvc.perform(get(PRIMES_PATH + "/10")
+        .accept(MediaType.APPLICATION_XML))
+        //then
+        .andExpect(status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_XML))
+        .andExpect(content().xml(
+            ResourceReader.readResourceAsString(
+                "responses/primes_10.xml"))
         );
   }
 

@@ -1,0 +1,9 @@
+<PrimesResponse>
+    <Initial>10</Initial>
+    <Primes>
+        <Primes>2</Primes>
+        <Primes>3</Primes>
+        <Primes>5</Primes>
+        <Primes>7</Primes>
+    </Primes>
+</PrimesResponse>
